@@ -1,0 +1,100 @@
+
+    <%- include('barranav.ejs') %>
+
+    
+    
+<link href="stylesheets/decomisoMercancias.css" rel="stylesheet">
+
+<h1>Decomisos mercancias</h1>    
+
+<!-- Botón de regreso -->
+<button type="button" class="btn-btn-outline-secondary" onclick="history.back()">
+  <i class="bi bi-arrow-return-left"></i>
+  Atras
+</button> 
+
+<!-- menu desplegable -->
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    ELEGIR TIPO DE MERCANCIA
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item" type="button" onclick="mostrarFormulario('productos')">Productos Comestibles</button></li>
+    <li><button class="dropdown-item" type="button" onclick="mostrarFormulario('medicamentos')">Medicamentos y Cosméticos</button></li>
+    <li><button class="dropdown-item" type="button" onclick="mostrarFormulario('bebidas')">Bebidas Alcohólicas y Energizantes</button></li>
+    <li><button class="dropdown-item" type="button" onclick="mostrarFormulario('cigarrillos')">Cigarrillos</button></li>
+    <li><button class="dropdown-item" type="button" onclick="mostrarFormulario('combustibles')">Combustibles</button></li>
+  </ul>
+</div>
+
+<!-- Formularios ocultos -->
+<div id="productos" style="display: none;">
+  <h2>Productos Comestibles</h2>
+
+  <form action="" method="post" class="form-container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nombre de Producto</th>
+          <th>Producto</th>
+          <th>CCE</th>
+          <th>CCM</th>
+          <th>CCN</th>
+          <th>CCS</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" name="Nombreproducto" required class="form-control"></td>
+          <td><input type="number" name="producto" required class="form-control"></td>
+          <td><input type="number" name="cce" required class="form-control"></td>
+          <td><input type="number" name="ccm" required class="form-control"></td>
+          <td><input type="number" name="ccn" required class="form-control"></td>
+          <td><input type="number" name="ccs" required class="form-control"></td>
+          <td><input type="number" name="total" readonly class="form-control"></td>
+
+
+<!-- fecha solicitada -->
+<td><div class="Fecha float-left">
+  <label for="date">Fecha:</label>
+  <input type="date" id="date" name="date" required>
+</div></td>
+
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" onclick="calcularTotal()" class="btn btn-primary">Calcular Total</button>
+    <button type="submit" class="btn btn-success">Enviar</button>
+  </form>
+</div>
+
+
+<!-- Resto de los formularios ocultos -->
+
+<script>
+  function mostrarFormulario(id) {
+    // Ocultar todos los formularios
+    document.querySelectorAll('div[id^=""]').forEach((element) => {
+      element.style.display = 'none';
+    });
+    // Mostrar el formulario correspondiente
+    document.getElementById(id).style.display = 'block';
+  }
+
+  function calcularTotal() {
+    // Obtener los valores de los campos
+    let producto = document.querySelector('input[name="producto"]').value;
+    let cce = document.querySelector('input[name="cce"]').value;
+    let ccm = document.querySelector('input[name="ccm"]').value;
+    let ccn = document.querySelector('input[name="ccn"]').value;
+    let ccs = document.querySelector('input[name="ccs"]').value;
+
+    // Calcular el total
+    let total = parseFloat(producto) + parseFloat(cce) + parseFloat(ccm) + parseFloat(ccn) + parseFloat(ccs);
+
+    // Actualizar el campo Total
+    document.querySelector('input[name="total"]').value = total;
+  }
+</script>
+

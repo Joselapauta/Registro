@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulario de Decomiso</title>
+  <link href="stylesheets/decomisoMercancias.css" rel="stylesheet">
+</head>
+<body>
+  <h1>Decomisos de Mercancías</h1>
+
+  <!-- Botón de regreso -->
+  <button type="button" class="btn-btn-outline-secondary" onclick="history.back()">
+    <i class="bi bi-arrow-return-left"></i>
+    Atrás
+  </button>
+
+  <!-- Formulario -->
+  <form action="/submit-decomiso" method="POST">
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>CCE</th>
+          <th>CCM</th>
+          <th>CCN</th>
+          <th>CCS</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="number" name="producto" required></td>
+          <td><input type="number" name="cce" required></td>
+          <td><input type="number" name="ccm" required></td>
+          <td><input type="number" name="ccn" required></td>
+          <td><input type="number" name="ccs" required></td>
+          <td><input type="number" name="total" readonly></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="Fecha float-left">
+      <label for="date">Fecha:</label>
+      <input type="date" id="date" name="date" required>
+    </div>
+
+    <button type="button" onclick="calcularTotal()">Calcular Total</button>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script>
+    function calcularTotal() {
+      // Obtener los valores de los campos
+      let producto = document.querySelector('input[name="producto"]').value;
+      let cce = document.querySelector('input[name="cce"]').value;
+      let ccm = document.querySelector('input[name="ccm"]').value;
+      let ccn = document.querySelector('input[name="ccn"]').value;
+      let ccs = document.querySelector('input[name="ccs"]').value;
+
+      // Calcular el total
+      let total = parseFloat(producto) + parseFloat(cce) + parseFloat(ccm) + parseFloat(ccn) + parseFloat(ccs);
+
+      // Actualizar el campo Total
+      document.querySelector('input[name="total"]').value = total;
+    }
+  </script>
+</body>
+</html>
