@@ -1,0 +1,79 @@
+Que es lo que hare:
+
+Desarrollar una aplicación web capaz de registrar las alertas y sus respectivos comandos.
+
+que problema va a solucionar (como se hace ahora y como se hará con tu solución):
+
+facilitará el registro de las alertas el cual, actualmente se realiza utilizando plantillas Excel, y se "automatizará" 
+utilizando interfaz de usuario, haciendo que sea mas fácil registrar los datos, reduciendo las probabilidades de cometer errores.
+
+quienes son los beneficiados:
+
+El equipo de analistas de la dirección de inteligencia del C5I.
+ 
+cuales son los procesos principales:
+
+registrar las alertas con sus comandos y mostrar el total de lo registrado.
+
+------------------------------------------------------------------------------------------------------------------------------
+UML cada una de sus clases con sus métodos
+
+
+usuario
+
+- se registra
+
+- inicia sesión
+
+- registrar, editar, modificar, eliminar datos
+
+comando
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+estructura de la base de datos
+
+Comando
+- id (PK)
+- nombre
+- descripcion
+
+Rango
+- id (PK)
+- descripcion
+
+Usuario
+- id (PK)
+- nombre
+- email
+- contraseña
+- createAt
+- updateAt
+- comando_id (FK, referencia Comando.id)
+- rango_id (FK, referencia Rango.id)
+
+Alerta
+- id (PK)
+- tipo (Decomiso Mercancías, Migración, Decomiso de Armas)
+- usuario id (FK, referencia Usuario.id)
+
+decomisoArmas
+- Nombreproducto
+- fecha
+- cce
+- ccm
+- ccn
+- ccs
+- total
+- usuario_id(FK, usuario.id)
+
+migración
+- id
+- fecha
+- frontera
+- nacionalidad
+- cantidad
+- usuario_id(FK, usuario.id)
+
