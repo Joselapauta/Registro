@@ -77,3 +77,98 @@ migración
 - cantidad
 - usuario_id(FK, usuario.id)
 
+-----------------------------------------------------------------------------------------------------------------------
+
+
+actosDelictivos_Este
+- id
+- Delitos (Homicidios por delincuencia, Homicidios por conflicto social,  Heridos por armas de fuego por delincuencia, Heridos por armas de fuego por conflicto social, Heridos por armas de fuego en proceso de investigacion, 
+Heridos por armas blanca por delincuencia, Heridos por armas blanca por conflicto social, Robos de motocicletas, Robos de Vehiculos, Asaltos, Arrebatos, Hurtos, Roturas)
+- Provincia (HATO MAYOR, SAN PEDRO DE MACORIS,LA ROMANA, EL SEIBO,LA ALTAGRACIA)
+- Total
+- createAt
+- usuario_id(FK, usuario.id)
+
+
+actosDelictivos_Sur
+- id
+- Delitos (Homicidios por delincuencia, Homicidios por conflicto social,  Heridos por armas de fuego por delincuencia, Heridos por armas de fuego por conflicto social, Heridos por armas de fuego en proceso de investigacion, 
+Heridos por armas blanca por delincuencia, Heridos por armas blanca por conflicto social, Robos de motocicletas, Robos de Vehiculos, Asaltos, Arrebatos, Hurtos, Roturas)
+- Provincia (SAN JUAN DE LA MAGUANA, BARAHONA, AZUA, BAHORUCO, ELIAS PINA, INDEPENDECIA, PERDERNALES, SAN JOSE DE OCOA, PERAVIA)
+- Total
+- createAt
+- usuario_id(FK, usuario.id)
+
+
+Armas_y_municiones_decomisadas
+- id
+- Provincia (SANTO DOMINGO, MONTE PLATA, DUARTE, MONSENOR NOUEL, SANTIAGO, BAHORUCO, PERAVIA, LA ALTAGRACIA, LA ROMANA)
+- Sector (AEROPUERTO DE LAS AMERICAS, PUERTO DE CAUCEDO, EL PUERTO DE HAINA, MONTE PLATA, SFM, BONAO, SANTIAGO DE LOS CABALLEROS, AEROPUERTO INT DEL CIBAO, SANTA MARIA, BANI, AEROPUERTO PUNTA CANA, LA ALTAGRACIA, BAVARO, LA ROMANA)
+- Pistolas INT
+- Rifle INT
+- Institucion_que_Decomisa
+- TotalMuniciones
+- TotalArmas
+- totalInstituciones_Participantes (armas total Decomisadas por CadaInstitucion) INT
+- Total
+- createAt
+- usuario_id(FK, usuario.id)
+
+actosDelictivos_Metropolitanos
+- id
+- Delitos (Homicidios por delincuencia, Homicidios por conflicto social,  Heridos por armas de fuego por delincuencia, Heridos por armas de fuego por conflicto social, Heridos por armas de fuego en proceso de investigacion, 
+Heridos por armas blanca por delincuencia, Heridos por armas blanca por conflicto social, Robos de motocicletas, Robos de Vehiculos, Asaltos, Arrebatos, Hurtos, Roturas)
+- Provincia (DISTRITO NACIONAL , SANTO DOMINGO, SAN CRISTOBAL, MONTE PLATA)
+- Total
+- createAt
+- usuario_id(FK, usuario.id)
+
+delitosAmbientales
+- id
+- amenaza (Delitos ambientales)
+- ComandoConjunto(NORTE, SUR, ESTE, METROPOLITANO)
+- Provincia (AZUA, BAHORUCO, BARAHONA, DISTRITO NACIONAL, DUARTE, ELIAS PINA, HATO MAYOR, INDEPENDENCIA, LA VEGA, MARTIA TRINIDAD SANCHEZ, MONSENOR NOUEL, MONTE PLATA, MONTECRISTI, PERAVIA, PUERTO PLATA, SAN CRISTOBAL, SAN JUAN DE LA MAGUANA, SAN PEDRO DE MACORIS,   
+  SANTIAGO DE LOS CABALLEROS, SANTIAGO RODRIGUEZ)
+- institucionActuante(SENPA)
+- operativosRealizados INT
+- NacionalidadDetenidos(Dominicana, Haitiana)
+- CantidadDetenidos
+- TipoIncautacion_Uevento (Incautacion de arena, madera(postes, trozas, varas), Incendio Forestal, incineracion de horno de carbon, movimiento de suelo sin permiso, quema y tala de arboles)
+- Fuente_de_Informacion(Reporte ejecutivo) 
+- Titular_fuente_de_Informacion(C5i) 
+- tareas_afectadas INT
+- Total
+- createAt
+- usuario_id(FK, usuario.id)
+
+decomisosDeMercancia
+- TipoProducto(productos comestibles(ajo, aceite,leche unidad, mantequilla unidad, sopita paquete, arroz libras, huevos unidad, pastas unidad), comesticos(medicamentos unidad, estimulantes sexuales unidad, perfume unidad, crema unidad, pasta denmtal unidad, jabon unidad, cabello postizo paquete), bebidas alcholicas y energizantes(whisky unidad, cerveza unidad, bebida energizante unidad, cleren unidad, ron unidad), cigarrillos(cigarrillos comme il fault unidad, cigarrillos capital unidad,cigarrillos point), combustible(gasolina galon, gasoil galos))
+- institucion(CESFRONT, EJERCITO)
+- provincia(DAJABON, MONTE CRISTI, PERDERNALES, ELIAS PINA, SAN JUAN, INDEPENDENCIA, SANTO DOMINGO, LA ALTAGRACIAS)
+- cce INT
+- ccm INT
+- ccn INT 
+- ccs INT
+- total
+- createAt
+- usuario_id(FK, usuario.id)
+
+registroAereo
+- id
+- amenaza(migracion)
+- comandoConjunto(este, norte, metropolitano)
+- provincia(la altagracia, santiago, santo domingo)
+- InstitucionActuante(DGM)
+- TipoDeIncautacion(deportado, devuelto, documentos falsos, documentos vencidos, impedimento de entrada, impedimento de salida, no admitidosm sello falso, sin documento, sustancias ilicitas)
+- cantidad
+- paisDeProcedencia(Estados unidos, colombia, ecuador, mexico, puerto rico, panama, haiti, canada, brasil, argentina, chile, espana, inglaterra, el salvador, jamaica)
+
+Migracion
+- id
+- comandoConjunto(metropolitano, norte, sur)
+- pronvincia(Dajabon, elias pina, independencia, perdernales)
+- puerto(terreste)
+- institucion(dgm)
+- nacionalidad(haitiana)
+- TipoEventualidad(Retornos Voluntarios, repatriaciones)
+- Cantidad
