@@ -79,96 +79,294 @@ migración
 
 -----------------------------------------------------------------------------------------------------------------------
 
-
-actosDelictivos_Este
-- id
-- Delitos (Homicidios por delincuencia, Homicidios por conflicto social,  Heridos por armas de fuego por delincuencia, Heridos por armas de fuego por conflicto social, Heridos por armas de fuego en proceso de investigacion, 
-Heridos por armas blanca por delincuencia, Heridos por armas blanca por conflicto social, Robos de motocicletas, Robos de Vehiculos, Asaltos, Arrebatos, Hurtos, Roturas)
-- Provincia (HATO MAYOR, SAN PEDRO DE MACORIS,LA ROMANA, EL SEIBO,LA ALTAGRACIA)
-- Total
-- createAt
-- usuario_id(FK, usuario.id)
+https://dbdiagram.io/d/667f07a29939893dae9000c3
 
 
-actosDelictivos_Sur
-- id
-- Delitos (Homicidios por delincuencia, Homicidios por conflicto social,  Heridos por armas de fuego por delincuencia, Heridos por armas de fuego por conflicto social, Heridos por armas de fuego en proceso de investigacion, 
-Heridos por armas blanca por delincuencia, Heridos por armas blanca por conflicto social, Robos de motocicletas, Robos de Vehiculos, Asaltos, Arrebatos, Hurtos, Roturas)
-- Provincia (SAN JUAN DE LA MAGUANA, BARAHONA, AZUA, BAHORUCO, ELIAS PINA, INDEPENDECIA, PERDERNALES, SAN JOSE DE OCOA, PERAVIA)
-- Total
-- createAt
-- usuario_id(FK, usuario.id)
+Table actosDelictivos_Este {
+id integer [primary key]
+Delitos varchar [ref: > delitos_delitoseste.id]
+Provincia varchar [ref: > provincia_delitoseste.id]
+Total int
+createAt timestamp
+//usuario_id(FK, usuario.id)
+}
+
+Table actosDelictivos_Sur {
+id integer [primary key]
+Delitos varchar [ref: > delitos_delitossur.id]
+Provincia varchar [ref: > provincia_delitossur.id]
+Total int
+createAt timestamp
+//usuario_id(FK, usuario.id)
+}
+
+Table actosDelictivos_Metropolitano {
+id integer [primary key]
+Delitos varchar [ref: > delitos_delitosMetropolitanos.id]
+Provincia varchar [ref: > provincia_delitosMetropolitanos.id]
+Total int 
+createAt timestamp
+//usuario_id(FK, usuario.id)
+}
+
+Table Armas_y_municiones_decomisadas {
+id integer [primary key]
+Provincia varchar [ref: > provincia_armasYmuniciones.id]
+Sector varchar [ref: > sector_armasYmuniciones.id]
+Pistolas INT
+Rifle INT
+Institucion_que_Decomisa varchar [ref: > InstitucionesqueDecomisa_armasYmuniciones.id]
+TotalMuniciones int
+TotalArmas int
+totalInstituciones_Participantes INT [ref: > totalInstituciones_participantes_armasYmuniciones.id]
+Total int
+createAt timestamp
+//usuario_id(FK, usuario.id)
+}
+
+Table delitosAmbientales {
+id integer [primary key]
+amenaza varchar [ref: > Amenaza_Delitosambientales.id]
+ComandoConjunto varchar [ref: > Comandoconjunto_Delitosambientales.id]
+Provincia varchar [ref: > Provincia_Delitosambientales.id]
+institucionActuante varchar [ref: > institucion_actuante_Delitosambientales.id]
+operativosRealizados INT
+NacionalidadDetenidos varchar [ref: > nacionalidadDetenidos_Delitosambientales.id]
+CantidadDetenidos int 
+TipoIncautacion_Uevento varchar [ref: > tipoIncautacion_Delitosambientales.id]
+Fuente_de_Informacion varchar [ref: > fuentedeInformacion_Delitosambientales.id]
+Titular_fuente_de_Informacion varchar [ref: > titularFuentedeInformacion_Delitosambientales.id]
+tareas_afectadas INT
+Total int
+created_at timestamp
+//usuario_id(FK, usuario.id)
+}
+
+Table decomisosDeMercancia {
+id integer [primary key]
+TipoProducto varchar [ref: > tipodeProductoMercancia.id]
+institucion varchar [ref: > institucionactuanteMercancias.id]
+Provincia varchar [ref: > provinciaMercancia.id]
+cce INT
+ccm INT
+ccn INT 
+ccs INT
+total int
+createAt timestamp
+//usuario_id(FK, usuario.id)
+}
+
+Table registroAereo {
+id integer [primary key]
+amenaza  varchar [ref: > AmenazaRegistroaereo.id]
+comandoConjunto varchar [ref: > regionComandoconjuntoRegistroaereo.id]
+Provincia varchar [ref: > ProvinciaRegistroaereo.id]
+InstitucionActuante varchar [ref: > institucionactuanteRegistroaereo.id]
+TipoDeIncautacion varchar [ref: > tipoincautacionregistroaereo.id]
+cantidad int
+paisDeProcedencia varchar [ref: > paisdeProcedencia_registroaereo.id]
+createAt timestamp
+//usuario_id(FK, usuario.id)
+}
+
+table Migracion {
+id int
+comandoConjunto varchar [ref: > regionComandoConjuntoMigracion.id]
+pronvincia varchar [ref: > ProvinciaMigracion.id]
+puerto varchar [ref: > nombreDelpuertoMigracion.id]
+institucion varchar [ref: > institucionMigracion.id]
+nacionalidad varchar [ref: > nacionalidadMigracion.id]
+TipoEventualidad varchar [ref: > tipoeventualidadMigracion.id]
+Cantidad int
+createAt timestamp
+//usuario_id(FK, usuario.id)
+} 
+
+//------contenido de la tabla actos delictivos Este----
+
+Table delitos_delitoseste{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table provincia_delitoseste{
+  id int [pk, increment]
+  Nombre varchar
+}
+
+//------contenido de la tabla actos delictivos sur------
+
+Table delitos_delitossur{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table provincia_delitossur{
+  id int [pk, increment]
+  Nombre varchar
+}
+
+//------contenido de la tabla actos delictivos metropolitanos----
+
+Table delitos_delitosMetropolitanos{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table provincia_delitosMetropolitanos{
+  id int [pk, increment]
+  Nombre varchar
+}
 
 
-Armas_y_municiones_decomisadas
-- id
-- Provincia (SANTO DOMINGO, MONTE PLATA, DUARTE, MONSENOR NOUEL, SANTIAGO, BAHORUCO, PERAVIA, LA ALTAGRACIA, LA ROMANA)
-- Sector (AEROPUERTO DE LAS AMERICAS, PUERTO DE CAUCEDO, EL PUERTO DE HAINA, MONTE PLATA, SFM, BONAO, SANTIAGO DE LOS CABALLEROS, AEROPUERTO INT DEL CIBAO, SANTA MARIA, BANI, AEROPUERTO PUNTA CANA, LA ALTAGRACIA, BAVARO, LA ROMANA)
-- Pistolas INT
-- Rifle INT
-- Institucion_que_Decomisa
-- TotalMuniciones
-- TotalArmas
-- totalInstituciones_Participantes (armas total Decomisadas por CadaInstitucion) INT
-- Total
-- createAt
-- usuario_id(FK, usuario.id)
+//------contenido de la tabla armas y municiones decomisadas-----
 
-actosDelictivos_Metropolitanos
-- id
-- Delitos (Homicidios por delincuencia, Homicidios por conflicto social,  Heridos por armas de fuego por delincuencia, Heridos por armas de fuego por conflicto social, Heridos por armas de fuego en proceso de investigacion, 
-Heridos por armas blanca por delincuencia, Heridos por armas blanca por conflicto social, Robos de motocicletas, Robos de Vehiculos, Asaltos, Arrebatos, Hurtos, Roturas)
-- Provincia (DISTRITO NACIONAL , SANTO DOMINGO, SAN CRISTOBAL, MONTE PLATA)
-- Total
-- createAt
-- usuario_id(FK, usuario.id)
+Table provincia_armasYmuniciones{
+  id int [pk, increment]
+  nombre varchar
+}
 
-delitosAmbientales
-- id
-- amenaza (Delitos ambientales)
-- ComandoConjunto(NORTE, SUR, ESTE, METROPOLITANO)
-- Provincia (AZUA, BAHORUCO, BARAHONA, DISTRITO NACIONAL, DUARTE, ELIAS PINA, HATO MAYOR, INDEPENDENCIA, LA VEGA, MARTIA TRINIDAD SANCHEZ, MONSENOR NOUEL, MONTE PLATA, MONTECRISTI, PERAVIA, PUERTO PLATA, SAN CRISTOBAL, SAN JUAN DE LA MAGUANA, SAN PEDRO DE MACORIS,   
-  SANTIAGO DE LOS CABALLEROS, SANTIAGO RODRIGUEZ)
-- institucionActuante(SENPA)
-- operativosRealizados INT
-- NacionalidadDetenidos(Dominicana, Haitiana)
-- CantidadDetenidos
-- TipoIncautacion_Uevento (Incautacion de arena, madera(postes, trozas, varas), Incendio Forestal, incineracion de horno de carbon, movimiento de suelo sin permiso, quema y tala de arboles)
-- Fuente_de_Informacion(Reporte ejecutivo) 
-- Titular_fuente_de_Informacion(C5i) 
-- tareas_afectadas INT
-- Total
-- createAt
-- usuario_id(FK, usuario.id)
+Table sector_armasYmuniciones{
+  id int [pk, increment]
+  Nombre varchar
+}
 
-decomisosDeMercancia
-- TipoProducto(productos comestibles(ajo, aceite,leche unidad, mantequilla unidad, sopita paquete, arroz libras, huevos unidad, pastas unidad), comesticos(medicamentos unidad, estimulantes sexuales unidad, perfume unidad, crema unidad, pasta denmtal unidad, jabon unidad, cabello postizo paquete), bebidas alcholicas y energizantes(whisky unidad, cerveza unidad, bebida energizante unidad, cleren unidad, ron unidad), cigarrillos(cigarrillos comme il fault unidad, cigarrillos capital unidad,cigarrillos point), combustible(gasolina galon, gasoil galos))
-- institucion(CESFRONT, EJERCITO)
-- provincia(DAJABON, MONTE CRISTI, PERDERNALES, ELIAS PINA, SAN JUAN, INDEPENDENCIA, SANTO DOMINGO, LA ALTAGRACIAS)
-- cce INT
-- ccm INT
-- ccn INT 
-- ccs INT
-- total
-- createAt
-- usuario_id(FK, usuario.id)
+Table InstitucionesqueDecomisa_armasYmuniciones{
+  id int [pk, increment]
+  nombre varchar
+}
 
-registroAereo
-- id
-- amenaza(migracion)
-- comandoConjunto(este, norte, metropolitano)
-- provincia(la altagracia, santiago, santo domingo)
-- InstitucionActuante(DGM)
-- TipoDeIncautacion(deportado, devuelto, documentos falsos, documentos vencidos, impedimento de entrada, impedimento de salida, no admitidosm sello falso, sin documento, sustancias ilicitas)
-- cantidad
-- paisDeProcedencia(Estados unidos, colombia, ecuador, mexico, puerto rico, panama, haiti, canada, brasil, argentina, chile, espana, inglaterra, el salvador, jamaica)
+Table totalInstituciones_participantes_armasYmuniciones{
+  id int [pk, increment]
+  nombre varchar
+}
 
-Migracion
-- id
-- comandoConjunto(metropolitano, norte, sur)
-- pronvincia(Dajabon, elias pina, independencia, perdernales)
-- puerto(terreste)
-- institucion(dgm)
-- nacionalidad(haitiana)
-- TipoEventualidad(Retornos Voluntarios, repatriaciones)
-- Cantidad
+
+//------contenido de la tabla delitos Ambientales-----
+
+Table Amenaza_Delitosambientales{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table Comandoconjunto_Delitosambientales{
+  id int [pk, increment]
+  Nombre varchar
+}
+
+Table Provincia_Delitosambientales{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table institucion_actuante_Delitosambientales{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table nacionalidadDetenidos_Delitosambientales{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table tipoIncautacion_Delitosambientales{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table fuentedeInformacion_Delitosambientales{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table titularFuentedeInformacion_Delitosambientales{
+  id int [pk, increment]
+  nombre varchar
+}
+
+
+
+//------contenido de la tabla decomiso de mercancia-----
+
+Table tipodeProductoMercancia{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table institucionactuanteMercancias{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table provinciaMercancia{
+  id int [pk, increment]
+  nombre varchar
+}
+
+
+
+//------contenido de la tabla RegistroAereo-------------
+
+Table AmenazaRegistroaereo{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table regionComandoconjuntoRegistroaereo {
+  id int [pk, increment]
+  Nombre varchar
+}
+
+Table ProvinciaRegistroaereo{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table institucionactuanteRegistroaereo{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table tipoincautacionregistroaereo{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table paisdeProcedencia_registroaereo{
+  id int [pk, increment]
+  nombre varchar
+}
+
+//------contenido de la tabla migracion-------------
+
+Table ProvinciaMigracion{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table regionComandoConjuntoMigracion {
+  id int [pk, increment]
+  Nombre varchar
+}
+
+Table nombreDelpuertoMigracion{
+  id int [pk, increment]
+  nombre varchar
+  
+}
+
+Table institucionMigracion{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table nacionalidadMigracion{
+  id int [pk, increment]
+  nombre varchar
+}
+
+Table tipoeventualidadMigracion{
+  id int [pk, increment]
+  nombre varchar
+}
+
